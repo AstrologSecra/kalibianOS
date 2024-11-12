@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Функция для вывода ASCII-арта с ANSI-цветами
+# Function to print ASCII art with ANSI colors
 print_kalibian_art() {
     local art="
     \e[38;5;56m/$$   /$$  /$$$$$$  /$$       /$$$$$$ /$$$$$$$  /$$$$$$  /$$$$$$  /$$   /$$\e[0m
@@ -16,34 +16,34 @@ print_kalibian_art() {
     echo -e "$art"
 }
 
-# Функция для добавления или замены ASCII-арта в .bashrc
+# Function to add or replace ASCII art in .bashrc
 add_or_replace_kalibian_art() {
     local profile_file="$HOME/.bashrc"
 
-    # Проверяем, есть ли уже функция в файле
+    # Check if the function already exists in the file
     if grep -q "print_kalibian_art" "$profile_file"; then
-        echo "Функция print_kalibian_art уже существует в $profile_file. Заменяем..."
-        # Удаляем существующую функцию
+        echo "Function print_kalibian_art already exists in $profile_file. Replacing..."
+        # Remove the existing function
         sed -i '/print_kalibian_art() {/,/}/d' "$profile_file"
     else
-        echo "Функция print_kalibian_art не найдена в $profile_file. Добавляем..."
+        echo "Function print_kalibian_art not found in $profile_file. Adding..."
     fi
 
-    # Добавляем новую функцию
-    echo -e "\n# Функция для вывода ASCII-арта с ANSI-цветами" >> "$profile_file"
+    # Add the new function
+    echo -e "\n# Function to print ASCII art with ANSI colors" >> "$profile_file"
     echo -e "print_kalibian_art() {" >> "$profile_file"
     echo -e "    local art=\"\"\"" >> "$profile_file"
     echo -e "    $art" >> "$profile_file"
     echo -e "    \"\"\"" >> "$profile_file"
     echo -e "    echo -e \"\$art\"" >> "$profile_file"
     echo -e "}" >> "$profile_file"
-    echo -e "\n# Вызов функции для вывода ASCII-арта" >> "$profile_file"
+    echo -e "\n# Call the function to print ASCII art" >> "$profile_file"
     echo -e "print_kalibian_art" >> "$profile_file"
-    echo "Функция добавлена или заменена в $profile_file."
+    echo "Function added or replaced in $profile_file."
 }
 
-# Вызов функции для добавления или замены ASCII-арта
+# Call the function to add or replace ASCII art
 add_or_replace_kalibian_art
 
-# Перезагрузка профиля для применения изменений
+# Reload the profile to apply changes
 source "$HOME/.bashrc" 2>/dev/null

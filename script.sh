@@ -44,4 +44,31 @@ else
     echo "No packages specified. Skipping installation."
 fi
 
+# Ask the user if they want to add kalibian software
+read -p "Do you want to add kalibian software? (y/n): " add_kalibian
+
+if [[ "$add_kalibian" == "y" ]]; then
+    # Define the repository URL and local directory
+    repo_url="https://github.com/AstrologSecra/kalibiansoft.git"
+    local_dir="$HOME/kalibiansoft"
+
+    # Check if the directory already exists
+    if [[ -d "$local_dir" ]]; then
+        echo "Removing existing kalibiansoft directory..."
+        rm -rf "$local_dir"
+    fi
+
+    # Clone the repository
+    echo "Cloning kalibiansoft repository..."
+    git clone "$repo_url" "$local_dir"
+
+    if [[ $? -eq 0 ]]; then
+        echo "kalibiansoft repository cloned successfully."
+    else
+        echo "Failed to clone kalibiansoft repository."
+    fi
+else
+    echo "Skipping kalibian software installation."
+fi
+
 echo "Operation completed."

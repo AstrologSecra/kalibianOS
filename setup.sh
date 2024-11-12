@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Предупреждение
-echo "Предупреждение: Этот скрипт запустит script.sh и art.sh."
-echo "Убедитесь, что вы понимаете последствия выполнения этих скриптов."
-read -p "Вы уверены, что хотите продолжить? (y/n): " confirm
+echo "Warning: This script will run script.sh and art.sh."
+echo "Make sure you understand the consequences of running these scripts."
+read -p "Are you sure you want to continue? (y/n): " confirm
 
 if [[ "$confirm" != "y" ]]; then
     echo "Отмена."
@@ -11,16 +11,16 @@ if [[ "$confirm" != "y" ]]; then
 fi
 
 # Установка прав на исполнение для script.sh и art.sh
-echo "Установка прав на исполнение для script.sh и art.sh..."
+echo "Preparring script.sh и art.sh..."
 chmod +x script.sh
 chmod +x art.sh
 
 # Запуск script.sh
-echo "Запуск script.sh..."
+echo "Start script.sh..."
 ./script.sh
 
 # Запуск art.sh
-echo "Запуск art.sh..."
+echo "Start art.sh..."
 ./art.sh
 
-echo "Операция завершена."
+echo "Completed."

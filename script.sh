@@ -1,47 +1,47 @@
 #!/bin/bash
 
-# Предупреждение
-echo "$(tput setab 1)Предупреждение: Этот скрипт удаляет все графические оболочки.$(tput setab 9)"
-echo "Это может привести к потере данных и неработоспособности системы."
-read -p "Вы уверены, что хотите продолжить? (y/n): " confirm
+# Warning
+echo "Warning: This script will remove all graphical environments."
+echo "This may lead to data loss and system malfunction."
+read -p "Are you sure you want to continue? (y/n): " confirm
 
 if [[ "$confirm" != "y" ]]; then
     echo "Отмена."
     exit 1
 fi
 
-# Удаление графических оболочек
-echo "Удаление графических оболочек..."
+# Removing graphical environments
+echo "Removing graphical environments..."
 sudo apt-get purge --auto-remove gnome* kde* xfce* lxde* cinnamon* mate*
 
-# Удаление пакетов, связанных с графикой
-echo "Удаление пакетов, связанных с графикой..."
+# Removing packages related to graphics
+echo "Removing packages related to graphics..."
 sudo apt-get purge --auto-remove xserver* x11-common
 
-# Очистка системы
-echo "Очистка системы..."
+# Cleaning the system
+echo "Cleaning the system..."
 sudo apt-get autoremove --purge
 sudo apt-get clean
 
-echo "Графические оболочки удалены."
+echo "Graphical environments removed."
 
-# Запрос у пользователя, какие пакеты установить
-echo "Введите список пакетов, которые вы хотите установить (через пробел):"
-read -p "Пакеты: " packages
+# Ask the user which packages to install
+echo "Enter the list of packages you want to install (separated by spaces):"
+read -p "Packages: " packages
 
 if [[ -n "$packages" ]]; then
-    echo "Проверка наличия пакетов в репозиториях..."
+    echo "Checking the availability of packages in repositories..."
     sudo apt-get update > /dev/null
     for package in $packages; do
         if sudo apt-cache show $package > /dev/null 2>&1; then
-            echo "Пакет $package найден. Установка..."
+            echo "Package $package found. Installing..."
             sudo apt-get install -y $package
         else
-            echo "Пакет $package не найден в репозиториях."
+            echo "Package $package not found in repositories."
         fi
     done
 else
-    echo "$(tput setab 3)Пакеты не указаны. Пропускаем установку.$(tput setab 9)"
+    echo "No packages specified. Skipping installation."
 fi
 
-echo "Операция завершена."
+echo "Operation completed."

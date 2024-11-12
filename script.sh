@@ -50,7 +50,7 @@ read -p "Do you want to add kalibian software? (y/n): " add_kalibian
 if [[ "$add_kalibian" == "y" ]]; then
     # Define the repository URL and local directory
     repo_url="https://github.com/AstrologSecra/ossoft.git"
-    local_dir="$HOME/kalibiansoft"
+    local_dir="$HOME/ossoft"
 
     # Check if the directory already exists
     if [[ -d "$local_dir" ]]; then

@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Удаление файла kalibianOS
-if [ -f "$HOME/kalibianOS" ]; then
-    echo "Deleting kalibianOS file..."
-    rm -rf "$HOME/kalibianOS"
-    echo "kalibianOS file successfully deleted."
+# Удаление файла kallbianDS
+if [ -d "$HOME/kallbianDS" ]; then
+    echo "Deleting kallbianDS directory..."
+    rm -rf "$HOME/kallbianDS"
+    echo "kallbianDS directory successfully deleted."
 else
-    echo "kalibianOS file not found."
+    echo "kallbianDS directory not found."
 fi
 
 # Клонирование репозитория в домашнюю директорию
-echo "Cloning repository https://github.com/AstrologSecra/kalibianOS/ to $HOME..."
-git clone https://github.com/AstrologSecra/kalibianOS/ "$HOME/kalibianOS"
+echo "Cloning repository https://github.com/SetrologSecra/kallbianDS/ to $HOME..."
+git clone https://github.com/SetrologSecra/kallbianDS/ "$HOME/kallbianDS"
 
 if [ $? -eq 0 ]; then
     echo "Repository successfully cloned."

@@ -13,7 +13,7 @@ fi
 # Установка прав на исполнение для script.sh и art.sh
 echo "Preparring script.sh и reloader.sh..."
 chmod +x script.sh
-chmod +x art.sh
+chmod +x reloader.sh
 
 # Запуск script.sh
 echo "Start script.sh..."

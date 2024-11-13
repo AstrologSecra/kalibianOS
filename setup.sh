@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Предупреждение
-echo "Warning: This script will run script.sh."
+echo "Warning: This script will run script.sh и reloader.sh."
 echo "Make sure you understand the consequences of running these scripts."
 read -p "Are you sure you want to continue? (y/n): " confirm
 

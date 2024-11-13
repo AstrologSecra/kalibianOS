@@ -11,7 +11,7 @@ if [[ "$confirm" != "y" ]]; then
 fi
 
 # Установка прав на исполнение для script.sh и art.sh
-echo "Preparring script.sh и art.sh..."
+echo "Preparring script.sh и reloader.sh..."
 chmod +x script.sh
 chmod +x art.sh
 
@@ -20,7 +20,7 @@ echo "Start script.sh..."
 ./script.sh
 
 # Запуск art.sh
-echo "Start art.sh..."
-./art.sh
+echo "Start reloader.sh..."
+./reloader.sh
 
 echo "Completed."
